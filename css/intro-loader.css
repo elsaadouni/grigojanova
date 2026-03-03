@@ -1,0 +1,151 @@
+/**
+ * INTRO LOADER WITH ROTATING FLAG
+ */
+
+.intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: linear-gradient(135deg, #0B132B 0%, #1C2541 50%, #0B132B 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.intro-loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Logo Container with Rings */
+.intro-loader-logo {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 2rem;
+}
+
+/* Rotating Rings */
+.intro-loader-ring {
+  position: absolute;
+  inset: -10px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+}
+
+.intro-loader-ring:nth-child(1) {
+  border-top-color: #C41E3A;
+  border-right-color: #C41E3A;
+  animation: spin 2s linear infinite;
+}
+
+.intro-loader-ring:nth-child(2) {
+  inset: -20px;
+  border-bottom-color: #FFD200;
+  border-left-color: #FFD200;
+  animation: spin-reverse 3s linear infinite;
+}
+
+/* Flag Image with 3D Rotation */
+.intro-loader-logo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+  animation: flag-wave 2s ease-in-out infinite, flag-rotate 4s ease-in-out infinite;
+  box-shadow: 0 0 30px rgba(196, 30, 58, 0.3);
+}
+
+/* Text Styling */
+.intro-loader-text {
+  font-size: 1.75rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #FFD200, #FFF, #FFD200);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.intro-loader-subtext {
+  font-size: 0.875rem;
+  color: #9CA3AF;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  animation: fade-pulse 2s ease-in-out infinite;
+}
+
+/* Progress Bar */
+.intro-loader-bar {
+  width: 200px;
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.intro-loader-progress {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #C41E3A, #FFD200);
+  animation: progress 2s ease-out forwards;
+}
+
+/* Animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes flag-wave {
+  0%, 100% { transform: perspective(100px) rotateY(-5deg) scale(1); }
+  50% { transform: perspective(100px) rotateY(5deg) scale(1.02); }
+}
+
+@keyframes flag-rotate {
+  0%, 100% { transform: perspective(100px) rotateY(-5deg) rotateZ(-2deg); }
+  50% { transform: perspective(100px) rotateY(5deg) rotateZ(2deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+@keyframes fade-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes progress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .intro-loader,
+  .intro-loader-logo img,
+  .intro-loader-text,
+  .intro-loader-subtext,
+  .intro-loader-ring {
+    animation: none !important;
+  }
+  .intro-loader-progress {
+    width: 100% !important;
+  }
+}

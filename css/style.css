@@ -1,0 +1,9 @@
+
+/* White highlight for Slovak-Russian text */
+.hero-title .highlight-white,
+.highlight-white {
+  color: #ffffff;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  font-style: italic;
+}

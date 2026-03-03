@@ -1,0 +1,79 @@
+/**
+ * ROTATING BORDER - Using 4 edge elements
+ */
+
+/* Top edge */
+.page-border-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #9400d3, #ff0000);
+  background-size: 200% 100%;
+  animation: borderSlide 3s linear infinite;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Bottom edge */
+.page-border-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #9400d3, #ff0000);
+  background-size: 200% 100%;
+  animation: borderSlide 3s linear infinite reverse;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Left edge */
+.page-border-left {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #9400d3, #ff0000);
+  background-size: 100% 200%;
+  animation: borderSlideVertical 3s linear infinite;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Right edge */
+.page-border-right {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #9400d3, #ff0000);
+  background-size: 100% 200%;
+  animation: borderSlideVertical 3s linear infinite reverse;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+@keyframes borderSlide {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes borderSlideVertical {
+  0% { background-position: 50% 0%; }
+  100% { background-position: 50% 200%; }
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+  .page-border-top,
+  .page-border-bottom,
+  .page-border-left,
+  .page-border-right {
+    display: none;
+  }
+}

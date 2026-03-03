@@ -1,0 +1,649 @@
+/**
+ * ============================================================================
+ * VERSION 1: LEGAL TECH THEME - CANARY YELLOW + RED + NAVY
+ * ============================================================================
+ * Theme: Legal Tech
+ * Primary: Canary Yellow #FFD200
+ * Secondary: Red #E10600  
+ * Accent: Navy #0B132B
+ * 
+ * This file imports shared styles and adds version-specific overrides
+ * with the Legal Tech color scheme.
+ * ============================================================================
+ */
+
+/* Import shared base styles */
+@import url('shared-styles.css');
+
+/* ==========================================================================
+   CSS VARIABLES - Legal Tech Color Scheme
+   ========================================================================== */
+:root {
+  /* Primary Colors - Canary Yellow */
+  --primary: #FFD200;
+  --primary-rgb: 255, 210, 0;
+  --primary-dark: #E5BC00;
+  --primary-alpha: rgba(255, 210, 0, 0.1);
+  --primary-contrast: #0B132B;
+  
+  /* Secondary Colors - Red */
+  --secondary: #E10600;
+  --secondary-dark: #C00500;
+  --secondary-alpha: rgba(225, 6, 0, 0.1);
+  --secondary-contrast: #FFFFFF;
+  
+  /* Accent Colors - Navy */
+  --navy: #0B132B;
+  --navy-light: #1C2541;
+  --navy-dark: #050A14;
+  
+  /* Additional Accent - Cyan */
+  --cyan: #00C2FF;
+  --cyan-alpha: rgba(0, 194, 255, 0.1);
+  
+  /* Background Colors */
+  --warm-white: #FFF7E6;
+  --bg: var(--warm-white);
+  --surface: #FFFFFF;
+  
+  /* Text Colors */
+  --text: var(--navy);
+  --text-muted: #6B7280;
+  
+  /* Border */
+  --border: #E5E7EB;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(11, 19, 43, 0.05);
+  --shadow-md: 0 4px 6px rgba(11, 19, 43, 0.1);
+  --shadow-lg: 0 10px 15px rgba(11, 19, 43, 0.1);
+  --shadow-xl: 0 20px 25px rgba(11, 19, 43, 0.15);
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition: 200ms ease;
+  
+  /* Terminal Colors */
+  --terminal-bg: var(--navy);
+  --terminal-header-bg: var(--navy-light);
+  --terminal-border: #0f3460;
+  --terminal-text: #ccd6f6;
+  --terminal-text-muted: #8892b0;
+  --terminal-accent: #64ffda;
+  
+  /* Footer Colors */
+  --footer-bg: var(--navy);
+  --footer-text: var(--warm-white);
+  --footer-text-muted: rgba(255, 247, 230, 0.7);
+  --footer-border: rgba(255, 247, 230, 0.1);
+  --footer-social-bg: rgba(255, 247, 230, 0.1);
+  
+  /* Status Colors */
+  --success-bg: #d1fae5;
+  --success-text: #065f46;
+  --error-bg: #fee2e2;
+  --error-text: #991b1b;
+}
+
+/* Dark Theme Overrides */
+[data-theme="dark"] {
+  --bg: var(--navy);
+  --surface: var(--navy-light);
+  --text: var(--warm-white);
+  --text-muted: #9CA3AF;
+  --border: #374151;
+  --primary-alpha: rgba(255, 210, 0, 0.2);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* ==========================================================================
+   SELECTION & FOCUS STYLES
+   ========================================================================== */
+::selection {
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   HEADER OVERRIDES
+   ========================================================================== */
+.header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav a:hover,
+.nav a.active {
+  color: var(--text);
+  background: var(--primary-alpha);
+}
+
+.nav a.active::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: var(--primary);
+  margin-top: 2px;
+  border-radius: var(--radius-full);
+}
+
+.lang-btn.active {
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.theme-toggle:hover {
+  background: var(--primary-alpha);
+}
+
+.menu-toggle:hover {
+  background: var(--primary-alpha);
+}
+
+.mobile-nav a:hover,
+.mobile-nav a.active {
+  background: var(--primary-alpha);
+}
+
+/* ==========================================================================
+   BUTTON OVERRIDES
+   ========================================================================== */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+  background: var(--secondary);
+  color: var(--secondary-contrast);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--secondary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-outline:hover:not(:disabled) {
+  border-color: var(--primary);
+  background: var(--primary-alpha);
+}
+
+/* ==========================================================================
+   HERO OVERRIDES
+   ========================================================================== */
+.hero-badge {
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.hero-title span {
+  color: var(--secondary);
+  position: relative;
+}
+
+/* Accent text in hero - Slovak-Russian highlight */
+.hero-accent {
+  color: #FFFFFF !important;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: inline-block;
+}
+
+.hero-accent::before {
+  content: '';
+  position: absolute;
+  inset: -4px -8px;
+  background: linear-gradient(135deg, var(--secondary) 0%, var(--navy) 100%);
+  border-radius: 8px;
+  z-index: -1;
+  transform: rotate(-1deg);
+}
+
+.hero-accent::after {
+  display: none !important;
+}
+
+.hero-title span::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: var(--primary);
+  z-index: -1;
+  opacity: 0.5;
+}
+
+/* Logo Ring Animation */
+.logo-ring {
+  border-color: var(--primary);
+}
+
+.logo-ring:nth-child(2) {
+  border-color: var(--cyan);
+}
+
+.logo-ring:nth-child(3) {
+  border-color: var(--secondary);
+}
+
+@keyframes pulse-ring {
+  0%, 100% { 
+    transform: scale(1); 
+    opacity: 0.6; 
+  }
+  50% { 
+    transform: scale(1.02); 
+    opacity: 1; 
+  }
+}
+
+/* ==========================================================================
+   TERMINAL SECTION OVERRIDES
+   ========================================================================== */
+.terminal-section {
+  background: var(--navy);
+}
+
+.terminal-container {
+  background: #1a1a2e;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.terminal-header {
+  background: var(--navy-light);
+  border-bottom: 1px solid var(--terminal-border);
+}
+
+.terminal-title {
+  color: var(--terminal-text-muted);
+}
+
+.terminal-body {
+  color: var(--terminal-text);
+}
+
+.terminal-prompt {
+  color: var(--primary);
+}
+
+.terminal-command {
+  color: var(--terminal-accent);
+}
+
+.terminal-output {
+  color: var(--terminal-text-muted);
+}
+
+@keyframes scroll-terminal {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+/* ==========================================================================
+   SECTION LABEL OVERRIDES
+   ========================================================================== */
+.section-label {
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+
+/* Highlight Box */
+.highlight-box {
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+
+/* ==========================================================================
+   CARD OVERRIDES
+   ========================================================================== */
+.card:hover {
+  border-color: var(--primary);
+}
+
+.card-icon {
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+
+/* ==========================================================================
+   STATS OVERRIDES
+   ========================================================================== */
+.stat-number {
+  color: var(--secondary);
+}
+
+/* ==========================================================================
+   PRICING OVERRIDES
+   ========================================================================== */
+.pricing-tab:hover {
+  border-color: var(--primary);
+}
+
+.pricing-tab.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.pricing-card.featured {
+  border-color: var(--primary);
+}
+
+.pricing-card.featured::before {
+  background: var(--secondary);
+  color: var(--secondary-contrast);
+}
+
+.pricing-feature svg {
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   FAQ OVERRIDES
+   ========================================================================== */
+.faq-question:hover {
+  color: var(--secondary);
+}
+
+.faq-icon {
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   CONTACT OVERRIDES
+   ========================================================================== */
+.contact-info-icon {
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.contact-info-value a:hover {
+  color: var(--secondary);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-alpha);
+}
+
+/* File Upload */
+.file-upload:hover,
+.file-upload.drag-over {
+  border-color: var(--primary);
+  background: var(--primary-alpha);
+}
+
+.file-upload-icon {
+  color: var(--primary);
+}
+
+.file-remove:hover {
+  color: var(--secondary);
+}
+
+/* Form Status */
+.form-status.success {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+
+.form-status.error {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+
+/* ==========================================================================
+   FOOTER OVERRIDES
+   ========================================================================== */
+.footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+}
+
+.footer-desc {
+  color: var(--footer-text-muted);
+}
+
+.footer-social a {
+  background: var(--footer-social-bg);
+  color: var(--footer-text);
+}
+
+.footer-social a:hover {
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.footer-title {
+  color: var(--primary);
+}
+
+.footer-links a {
+  color: var(--footer-text-muted);
+}
+
+.footer-links a:hover {
+  color: var(--footer-text);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--footer-border);
+}
+
+.footer-copyright {
+  color: rgba(255, 247, 230, 0.5);
+}
+
+.footer-copyright a {
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   HELP BOT OVERRIDES
+   ========================================================================== */
+.bot-toggle {
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.bot-avatar {
+  background: var(--primary);
+}
+
+.bot-suggestion:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.bot-send {
+  background: var(--primary);
+  color: var(--primary-contrast);
+}
+
+.bot-send:hover {
+  background: var(--primary-dark);
+}
+
+/* ==========================================================================
+   KEY ANIMATIONS & EFFECTS
+   ========================================================================== */
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Slide In Left */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+/* Slide In Right */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.slide-in-right {
+  animation: slideInRight 0.5s ease-out forwards;
+}
+
+/* Scale In */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.scale-in {
+  animation: scaleIn 0.4s ease-out forwards;
+}
+
+/* Glow Effect for Primary Elements */
+.glow-primary {
+  box-shadow: 0 0 20px rgba(255, 210, 0, 0.3);
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--surface) 25%,
+    var(--primary-alpha) 50%,
+    var(--surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Pulse Animation for Attention */
+@keyframes attention-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.attention-pulse {
+  animation: attention-pulse 2s ease-in-out infinite;
+}
+
+/* Border Glow Animation */
+@keyframes border-glow {
+  0%, 100% { border-color: var(--border); }
+  50% { border-color: var(--primary); }
+}
+
+.border-glow {
+  animation: border-glow 2s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================================================== */
+@media (max-width: 640px) {
+  .hero-title span::after {
+    height: 4px;
+    bottom: 2px;
+  }
+  
+  .pricing-card.featured::before {
+    font-size: 0.625rem;
+    padding: 0.2rem 0.75rem;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY IMPROVEMENTS
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .terminal-track {
+    animation: none;
+  }
+  
+  .logo-ring {
+    animation: none;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --primary: #FFD200;
+    --primary-contrast: #000000;
+    --secondary: #FF0000;
+    --text: #000000;
+    --border: #000000;
+  }
+  
+  [data-theme="dark"] {
+    --text: #FFFFFF;
+    --border: #FFFFFF;
+  }
+}

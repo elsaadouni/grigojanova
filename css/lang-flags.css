@@ -1,0 +1,111 @@
+/**
+ * LANGUAGE SWITCHER WITH FLAGS - Clean & Fast
+ */
+
+/* Language Switcher Container */
+.lang-switcher {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Language Button */
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.6rem;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted, #6B7280);
+  white-space: nowrap;
+}
+
+.lang-btn:hover {
+  background: var(--primary-alpha, rgba(255, 210, 0, 0.1));
+  color: var(--text, #0B132B);
+}
+
+.lang-btn.active {
+  background: var(--primary, #FFD200);
+  color: var(--navy, #0B132B);
+  border-color: var(--primary, #FFD200);
+}
+
+/* Flag Icon */
+.lang-flag {
+  width: 20px;
+  height: 15px;
+  border-radius: 2px;
+  object-fit: cover;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+/* Language Code */
+.lang-code {
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+/* Mobile Language Switcher */
+.mobile-lang-switcher {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: center;
+  border-top: 1px solid var(--border, #E5E7EB);
+  margin-top: 1rem;
+}
+
+.mobile-lang-switcher .lang-btn {
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  min-width: 70px;
+}
+
+.mobile-lang-switcher .lang-flag {
+  width: 32px;
+  height: 24px;
+}
+
+.mobile-lang-switcher span {
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* Dark theme */
+[data-theme="dark"] .lang-btn {
+  color: var(--text-muted, #9CA3AF);
+}
+
+[data-theme="dark"] .lang-btn:hover {
+  color: var(--text, #FFF);
+}
+
+/* Compact for small screens */
+@media (max-width: 1024px) {
+  .lang-switcher {
+    gap: 0.25rem;
+  }
+  
+  .lang-btn {
+    padding: 0.3rem 0.5rem;
+    gap: 0.3rem;
+  }
+  
+  .lang-flag {
+    width: 18px;
+    height: 13px;
+  }
+  
+  .lang-code {
+    font-size: 0.7rem;
+  }
+}
